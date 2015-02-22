@@ -4,7 +4,6 @@ var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var pokemonRoutes = require('./routes/pokemon_routes');
-var userRoutes = require('./routes/user_routes');
 
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/pokemonapp_development');
 
@@ -16,9 +15,8 @@ require('./lib/passport')(passport);
 var pokemonRouter = express.Router();
 var userRouter = express.Router();
 
-pokemonRoutes(pokemonRouter);
-
-userRoutes(userRouter, passport, app.get('appSecret'));
+pokemonRoutes(pokemonRouter, app.get('appSecret'));
+require('./routes/user_routes')(userRouter, passport, app.get('appSecret'));
 
 app.use('/api/v1', pokemonRouter);
 app.use('/api/v1', userRouter);
