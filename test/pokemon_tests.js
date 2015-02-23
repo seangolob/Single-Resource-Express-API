@@ -8,6 +8,7 @@ var chaihttp = require('chai-http');
 chai.use(chaihttp);
 
 var expect = chai.expect;
+var token;
 
 describe('pokemons api end points', function() {
   after(function(done){
@@ -16,10 +17,21 @@ describe('pokemons api end points', function() {
     });
   });
 
+  before(function(done) {
+    chai.request('localhost:3000/api/v1')
+      .post('/.create_user')
+      .send({email: 'test@test', password: 'test'})
+      .end(function(err, res){
+        expect(err).to.eql(null);
+        token = res.body.token;
+        done();
+      });
+  });
+
   it('should respond to a post request', function(done){
     chai.request('localhost:3000/api/v1')
       .post('/pokemon')
-      .send({pokemonName: 'test pokemon', pokemonType: 'test type'})
+      .send({ eat: token, pokemonName: 'test pokemon', pokemonType: 'test type'})
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.body).to.have.property('_id');
@@ -33,7 +45,7 @@ describe('pokemons api end points', function() {
   it('should have a default type', function(done){
     chai.request('localhost:3000/api/v1')
       .post('/pokemon')
-      .send({pokemonName: 'test pokemon'})
+      .send({eat: token, pokemonName: 'test pokemon'})
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.body.pokemonType).to.eql('Normal');
@@ -46,7 +58,7 @@ describe('pokemons api end points', function() {
     beforeEach(function(done){
       chai.request('localhost:3000/api/v1')
         .post('/pokemon')
-        .send({noteBody: 'test pokemon'})
+        .send({eat: token, pokemonName: 'test pokemon'})
         .end(function(err, res) {
           id = res.body._id;
           done();
