@@ -19,7 +19,7 @@ describe('pokemons api end points', function() {
 
   before(function(done) {
     chai.request('localhost:3000/api/v1')
-      .post('/.create_user')
+      .post('/create_user')
       .send({email: 'test@test', password: 'test'})
       .end(function(err, res){
         expect(err).to.eql(null);
