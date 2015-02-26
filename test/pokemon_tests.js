@@ -23,7 +23,7 @@ describe('pokemons api end points', function() {
       .send({email: 'test@test', password: 'test'})
       .end(function(err, res){
         expect(err).to.eql(null);
-        token = res.body.token;
+        token = res.body.eat;
         done();
       });
   });
@@ -68,6 +68,7 @@ describe('pokemons api end points', function() {
     it('should have an index', function(done) {
       chai.request('localhost:3000/api/v1')
         .get('/pokemon')
+        .send({eat: token})
         .end(function(err, res){
           expect(err).to.eql(null);
           expect(Array.isArray(res.body)).to.be.true; // jshint ignore:line
@@ -78,7 +79,7 @@ describe('pokemons api end points', function() {
     it('should be able to update a pokemon', function(done) {
       chai.request('localhost:3000/api/v1')
         .put('/pokemon/' + id)
-        .send({pokemonName: 'new test name'})
+        .send({eat: token, pokemonName: 'new test name'})
         .end(function(err, res) {
           expect(err).to.eql(null);
           expect(res.body.pokemonName).to.eql('new test name');
@@ -89,6 +90,7 @@ describe('pokemons api end points', function() {
     it('should be able to delete a pokemon', function(done) {
       chai.request('localhost:3000/api/v1')
         .delete('/pokemon/' + id)
+        .send({eat: token})
         .end(function(err, res) {
           expect(err).to.eql(null);
           expect(Array.isArray(res.body)).to.be.true; // jshint ignore:line
