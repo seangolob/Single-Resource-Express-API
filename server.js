@@ -7,6 +7,7 @@ var pokemonRoutes = require('./routes/pokemon_routes');
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/pokemonapp_development');
 
 var app = express();
+app.use(express.static(__dirname + '/build'));
 var router = express.Router();
 
 pokemonRoutes(router);
