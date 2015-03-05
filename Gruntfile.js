@@ -7,6 +7,7 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
     jshint: {
@@ -49,6 +50,11 @@ module.exports = function(grunt){
       },
       options: {
         transform: ['debowerify']
+      }
+    },
+    watch: {
+      scripts: {
+        files: ['app/**/*']
       }
     }
   });
