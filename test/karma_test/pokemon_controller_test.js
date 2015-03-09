@@ -74,6 +74,6 @@ describe('pokemon controller', function() {
       $httpBackend.flush();
 
       expect($scope.pokemons.length).toBe(0);
-    })
+    });
   });
 });

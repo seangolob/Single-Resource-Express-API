@@ -8,6 +8,7 @@
     "after": true,
     "beforeEach": true,
     "chai": true,
-    "angular": true
+    "angular": true,
+    "expect": true
   }
 }
