@@ -1,0 +1,7 @@
+**/node_modules/
+**/*.sw?
+**/npm-debug.log
+**/data/
+**/bower_components/
+**/build/
+test/karma_test/karma_test_bundle.js
