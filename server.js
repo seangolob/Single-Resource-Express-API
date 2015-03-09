@@ -4,7 +4,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var pokemonRoutes = require('./routes/pokemon_routes');
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/pokemonapp_development');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/pokemonapp_development');
 
 var app = express();
 app.use(express.static(__dirname + '/build'));
