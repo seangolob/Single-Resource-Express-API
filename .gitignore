@@ -4,3 +4,4 @@
 **/data/
 **/bower_components/
 **/build/
+test/karma_test/karma_test_bundle.js

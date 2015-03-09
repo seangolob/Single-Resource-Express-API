@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 module.exports = function(app) {
   app.controller('pokemonController', ['$scope', '$http', function($scope, $http) {
@@ -75,4 +75,4 @@ module.exports = function(app) {
       }
     };
   }]);
-}
+};
