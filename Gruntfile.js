@@ -61,7 +61,7 @@ module.exports = function(grunt){
         dest: 'test/client_side/test_bundle.js'
       },
       options: {
-        transform: ['debowerify']
+        transform: ['reactify','debowerify']
       }
     },
 
