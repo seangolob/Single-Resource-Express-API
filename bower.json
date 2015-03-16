@@ -1,0 +1,22 @@
+{
+  "name": "Single-Resource-Express-API",
+  "version": "0.0.0",
+  "homepage": "https://github.com/seangolob/Single-Resource-Express-API",
+  "authors": [
+    "Sean Golob <seangolob@live.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.13.0"
+  },
+  "devDependencies": {
+    "jquery": "~2.1.3"
+  }
+}
